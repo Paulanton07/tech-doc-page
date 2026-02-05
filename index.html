@@ -3,93 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electron App Development Documentation</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Comprehensive Electron framework documentation covering setup, development, and best practices for building cross-platform desktop applications.">
+  <meta name="keywords" content="Electron, JavaScript, Desktop Apps, Cross-platform, Node.js, Chromium">
+  <meta name="author" content="Electron Documentation">
+  <title>Electron Documentation - Build Cross-Platform Desktop Apps</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <div class="container">
-    <nav id="navbar">
-      <header>Electron Documentation</header>
-      <a class="nav-link" href="#Introduction_to_Electron">Introduction to Electron</a>
-      <a class="nav-link" href="#Setup_and_Installation">Setup and Installation</a>
-      <a class="nav-link" href="#Main_vs_Renderer_Process">Main vs Renderer Process</a>
-      <a class="nav-link" href="#Building_Your_First_App">Building Your First App</a>
-      <a class="nav-link" href="#Packaging_and_Distribution">Packaging and Distribution</a>
-      <a class="nav-link" href="#Best_Practices_and_Security">Best Practices and Security</a>
-    </nav>
-    
-    <main id="main-doc">
+  <nav class="navbar">
+    <div class="navbar-header">Electron Documentation</div>
+    <div class="nav-links">
+      <a class="nav-link active" href="index.html">Home</a>
+      <a class="nav-link" href="docs/introduction.html">Introduction</a>
+      <a class="nav-link" href="docs/setup.html">Setup</a>
+      <a class="nav-link" href="docs/processes.html">Processes</a>
+      <a class="nav-link" href="docs/first-app.html">First App</a>
+      <a class="nav-link" href="docs/packaging.html">Packaging</a>
+      <a class="nav-link" href="docs/security.html">Security</a>
+    </div>
+  </nav>
 
-      <section class="main-section" id="Introduction_to_Electron">
-        <header>Introduction to Electron</header>
-        <p>Electron is a framework for building cross-platform desktop applications using web technologies.</p>
-        <p>It combines Chromium and Node.js into a single runtime.</p>
-        <ul>
-          <li>Open source</li>
-          <li>Cross-platform</li>
-          <li>Active community</li>
-        </ul>
-        <code>const { app, BrowserWindow } = require('electron');</code>
+  <div class="main-container">
+    <div class="content">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      
+      <div id="main-content" class="hero">
+        <h1>Electron Documentation</h1>
+        <p>Build cross-platform desktop applications with web technologies</p>
+        <p>JavaScript, HTML, and CSS combined with Chromium and Node.js</p>
+      </div>
+
+      <section>
+        <h2 style="text-align: center; margin-bottom: 30px; color: #1a1a2e;">Documentation Topics</h2>
+        <div class="doc-grid">
+          <a href="docs/introduction.html" class="doc-card">
+            <h3>Introduction to Electron</h3>
+            <p>Learn about Electron framework, its architecture, and why it's the perfect choice for building desktop applications with web technologies.</p>
+          </a>
+
+          <a href="docs/setup.html" class="doc-card">
+            <h3>Setup and Installation</h3>
+            <p>Get started with Electron development by setting up your development environment and installing the necessary tools and dependencies.</p>
+          </a>
+
+          <a href="docs/processes.html" class="doc-card">
+            <h3>Main vs Renderer Process</h3>
+            <p>Understand the dual-process architecture of Electron and how the main process and renderer processes work together.</p>
+          </a>
+
+          <a href="docs/first-app.html" class="doc-card">
+            <h3>Building Your First App</h3>
+            <p>Create your first Electron application step-by-step, from basic window creation to loading content and handling events.</p>
+          </a>
+
+          <a href="docs/packaging.html" class="doc-card">
+            <h3>Packaging and Distribution</h3>
+            <p>Learn how to package your Electron app for distribution on Windows, macOS, and Linux using popular packaging tools.</p>
+          </a>
+
+          <a href="docs/security.html" class="doc-card">
+            <h3>Best Practices and Security</h3>
+            <p>Follow security guidelines and best practices to build secure, reliable, and maintainable Electron applications.</p>
+          </a>
+        </div>
       </section>
 
-      <section class="main-section" id="Setup_and_Installation">
-        <header>Setup and Installation</header>
-        <p>To get started, install Electron via npm:</p>
-        <p>Make sure you have Node.js installed first.</p>
-        <ul>
-          <li>Install Node.js</li>
-          <li>Run <code>npm install electron --save-dev</code></li>
-        </ul>
-        <code>npm install electron --save-dev</code>
+      <section style="margin-top: 60px; text-align: center; padding: 40px 20px; background: #f8f9fa; border-radius: 10px;">
+        <h2 style="color: #1a1a2e; margin-bottom: 20px;">Get Started</h2>
+        <p style="font-size: 1.1em; margin-bottom: 20px;">Ready to build your first Electron application?</p>
+        <a href="docs/introduction.html" class="nav-button" style="display: inline-block;">Start Learning →</a>
       </section>
-
-      <section class="main-section" id="Main_vs_Renderer_Process">
-        <header>Main vs Renderer Process</header>
-        <p>Electron apps have two types of processes: main and renderer.</p>
-        <p>The main process manages the app lifecycle, while renderer processes handle UI.</p>
-        <ul>
-          <li>Main process: Node.js environment</li>
-          <li>Renderer process: Browser environment</li>
-        </ul>
-        <code>// main.js</code>
-        <code>// renderer.js</code>
-      </section>
-
-      <section class="main-section" id="Building_Your_First_App">
-        <header>Building Your First App</header>
-        <p>Create a main.js file and an index.html file.</p>
-        <p>Use Electron APIs to open windows and load content.</p>
-        <ul>
-          <li>Create <code>main.js</code></li>
-          <li>Create <code>index.html</code></li>
-        </ul>
-        <code>app.on('ready', createWindow);</code>
-      </section>
-
-      <section class="main-section" id="Packaging_and_Distribution">
-        <header>Packaging and Distribution</header>
-        <p>Package your app using tools like electron-packager or electron-builder.</p>
-        <p>Distribute your app for Windows, macOS, and Linux.</p>
-        <ul>
-          <li>Use <code>electron-packager</code></li>
-          <li>Use <code>electron-builder</code></li>
-        </ul>
-        <code>npx electron-packager .</code>
-      </section>
-
-      <section class="main-section" id="Best_Practices_and_Security">
-        <header>Best Practices and Security</header>
-        <p>Follow security guidelines to protect your users.</p>
-        <p>Keep dependencies up to date and avoid using Node.js integration in renderer unless necessary.</p>
-        <ul>
-          <li>Disable Node.js integration in renderer</li>
-          <li>Use context isolation</li>
-          <li>Validate user input</li>
-        </ul>
-        <code>webPreferences: { nodeIntegration: false, contextIsolation: true }</code>
-      </section>
-
-    </main>
+    </div>
   </div>
 </body>
 </html>

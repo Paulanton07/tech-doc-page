@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Building Your First Electron App - Step-by-step guide to creating your first desktop application.">
+  <title>Building Your First App - Electron Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-header">Electron Documentation</div>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link" href="introduction.html">Introduction</a>
+      <a class="nav-link" href="setup.html">Setup</a>
+      <a class="nav-link" href="processes.html">Processes</a>
+      <a class="nav-link active" href="first-app.html">First App</a>
+      <a class="nav-link" href="packaging.html">Packaging</a>
+      <a class="nav-link" href="security.html">Security</a>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="content">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      
+      <div id="main-content" class="doc-header">
+        <h1>Building Your First App</h1>
+      </div>
+
+      <div class="doc-section">
+        <h2>Getting Started</h2>
+        <p>Now that you understand Electron's architecture, let's build your first application. We'll create a simple desktop app with a basic window and some content.</p>
+        <p>Use Electron APIs to open windows and load content into them.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Project Structure</h2>
+        <p>Your first Electron app needs at least two files:</p>
+        <ul>
+          <li><strong>Create <code>main.js</code></strong> - The main process entry point</li>
+          <li><strong>Create <code>index.html</code></strong> - The web page to display in the window</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Creating the Main Process File</h2>
+        <p>Create a <code>main.js</code> file in your project root. This file will contain the main process code that creates the application window:</p>
+        <pre><code>const { app, BrowserWindow } = require('electron');
+
+function createWindow() {
+  // Create the browser window
+  const mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true
+    }
+  });
+
+  // Load the index.html file
+  mainWindow.loadFile('index.html');
+}
+
+// This method will be called when Electron has finished initialization
+app.on('ready', createWindow);
+
+// Quit when all windows are closed
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+// On macOS, re-create window when dock icon is clicked
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});</code></pre>
+      </div>
+
+      <div class="doc-section">
+        <h2>Creating the HTML File</h2>
+        <p>Create an <code>index.html</code> file with your application's user interface:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First Electron App&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, Electron!&lt;/h1&gt;
+  &lt;p&gt;Welcome to your first Electron application.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <div class="doc-section">
+        <h2>Configuring package.json</h2>
+        <p>Update your <code>package.json</code> to set the main entry point and add a start script:</p>
+        <pre><code>{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^latest"
+  }
+}</code></pre>
+      </div>
+
+      <div class="doc-section">
+        <h2>Running Your App</h2>
+        <p>Now you can run your Electron application:</p>
+        <pre><code>npm start</code></pre>
+        <p>This command will launch your first Electron application in a new window!</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Next Steps</h2>
+        <ul>
+          <li>Add more functionality to your application</li>
+          <li>Experiment with different window options and sizes</li>
+          <li>Add CSS styling to your HTML</li>
+          <li>Implement JavaScript interactions in the renderer process</li>
+          <li>Learn about IPC for communication between processes</li>
+        </ul>
+      </div>
+
+      <div class="page-navigation">
+        <a href="processes.html" class="nav-button">← Previous: Processes</a>
+        <a href="../index.html" class="back-home">Back to Home</a>
+        <a href="packaging.html" class="nav-button">Next: Packaging →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
