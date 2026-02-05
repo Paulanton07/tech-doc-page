@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introduction to Electron framework - Learn how to build cross-platform desktop applications with web technologies.">
+  <title>Introduction to Electron - Electron Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-header">Electron Documentation</div>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link active" href="introduction.html">Introduction</a>
+      <a class="nav-link" href="setup.html">Setup</a>
+      <a class="nav-link" href="processes.html">Processes</a>
+      <a class="nav-link" href="first-app.html">First App</a>
+      <a class="nav-link" href="packaging.html">Packaging</a>
+      <a class="nav-link" href="security.html">Security</a>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="content">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      
+      <div id="main-content" class="doc-header">
+        <h1>Introduction to Electron</h1>
+      </div>
+
+      <div class="doc-section">
+        <h2>What is Electron?</h2>
+        <p>Electron is a framework for building cross-platform desktop applications using web technologies. It combines Chromium and Node.js into a single runtime, allowing developers to create desktop applications using HTML, CSS, and JavaScript.</p>
+        <p>With Electron, you can leverage your existing web development skills to build native desktop applications that work on Windows, macOS, and Linux from a single codebase.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Open source</strong> - Electron is free and open-source, with an active community of contributors</li>
+          <li><strong>Cross-platform</strong> - Build once, deploy everywhere: Windows, macOS, and Linux</li>
+          <li><strong>Active community</strong> - Large ecosystem with thousands of packages and extensive documentation</li>
+          <li><strong>Web technologies</strong> - Use familiar HTML, CSS, and JavaScript to build desktop apps</li>
+          <li><strong>Native capabilities</strong> - Access operating system features through Node.js APIs</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>How It Works</h2>
+        <p>Electron embeds Chromium (the open-source browser behind Google Chrome) and Node.js into a single executable. This allows your application to:</p>
+        <ul>
+          <li>Render user interfaces using modern web technologies</li>
+          <li>Access the file system and operating system features through Node.js</li>
+          <li>Use npm packages and existing JavaScript libraries</li>
+          <li>Create platform-specific features while maintaining a single codebase</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Popular Apps Built with Electron</h2>
+        <p>Many well-known applications use Electron, including:</p>
+        <ul>
+          <li>Visual Studio Code - Microsoft's popular code editor</li>
+          <li>Slack - Team collaboration and messaging platform</li>
+          <li>Discord - Voice, video, and text communication platform</li>
+          <li>GitHub Desktop - Git and GitHub integration tool</li>
+          <li>Atom - Hackable text editor</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Basic Example</h2>
+        <p>Here's a simple example of importing Electron modules:</p>
+        <pre><code>const { app, BrowserWindow } = require('electron');
+
+// Your application logic here</code></pre>
+      </div>
+
+      <div class="page-navigation">
+        <a href="../index.html" class="back-home">← Back to Home</a>
+        <div style="flex: 1;"></div>
+        <a href="setup.html" class="nav-button">Next: Setup and Installation →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

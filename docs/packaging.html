@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Packaging and Distribution - Learn how to package your Electron app for distribution on all platforms.">
+  <title>Packaging and Distribution - Electron Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-header">Electron Documentation</div>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link" href="introduction.html">Introduction</a>
+      <a class="nav-link" href="setup.html">Setup</a>
+      <a class="nav-link" href="processes.html">Processes</a>
+      <a class="nav-link" href="first-app.html">First App</a>
+      <a class="nav-link active" href="packaging.html">Packaging</a>
+      <a class="nav-link" href="security.html">Security</a>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="content">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      
+      <div id="main-content" class="doc-header">
+        <h1>Packaging and Distribution</h1>
+      </div>
+
+      <div class="doc-section">
+        <h2>Why Package Your App?</h2>
+        <p>Once you've built your Electron application, you'll want to distribute it to users. Packaging creates executable files that users can run without installing Node.js or development tools.</p>
+        <p>Distribute your app for Windows, macOS, and Linux from a single codebase.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Popular Packaging Tools</h2>
+        <p>There are several tools available for packaging Electron applications:</p>
+        <ul>
+          <li><strong>Use <code>electron-packager</code></strong> - Simple and straightforward packaging tool</li>
+          <li><strong>Use <code>electron-builder</code></strong> - Advanced packaging with auto-update support and installers</li>
+          <li><strong>Electron Forge</strong> - Complete toolchain for building and publishing</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Using electron-packager</h2>
+        <p>Electron Packager is a simple tool for packaging your application:</p>
+        <pre><code>// Install electron-packager
+npm install electron-packager --save-dev
+
+// Package your application
+npx electron-packager . MyApp --platform=win32,darwin,linux --arch=x64</code></pre>
+        <p>This command creates distributable packages for Windows, macOS, and Linux.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Using electron-builder</h2>
+        <p>Electron Builder provides more advanced features including auto-updates and installers:</p>
+        <pre><code>// Install electron-builder
+npm install electron-builder --save-dev
+
+// Add build configuration to package.json
+{
+  "build": {
+    "appId": "com.example.myapp",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
+
+// Build your application
+npm run build</code></pre>
+      </div>
+
+      <div class="doc-section">
+        <h2>Platform-Specific Considerations</h2>
+        <ul>
+          <li><strong>Windows</strong> - Create .exe installers with NSIS or Squirrel</li>
+          <li><strong>macOS</strong> - Generate .dmg files and handle code signing</li>
+          <li><strong>Linux</strong> - Build .deb, .rpm, or AppImage formats</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Code Signing</h2>
+        <p>For production apps, you should sign your application:</p>
+        <ul>
+          <li>Windows: Use a code signing certificate</li>
+          <li>macOS: Use an Apple Developer certificate</li>
+          <li>Linux: Sign with GPG keys (optional)</li>
+        </ul>
+        <p>Code signing helps users trust your application and is required for some distribution channels.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Distribution Channels</h2>
+        <p>Once packaged, you can distribute your app through various channels:</p>
+        <ul>
+          <li>Direct download from your website</li>
+          <li>Mac App Store (requires Apple Developer account)</li>
+          <li>Microsoft Store (requires Microsoft Developer account)</li>
+          <li>Snap Store or Flatpak for Linux</li>
+          <li>GitHub Releases</li>
+        </ul>
+      </div>
+
+      <div class="page-navigation">
+        <a href="first-app.html" class="nav-button">← Previous: First App</a>
+        <a href="../index.html" class="back-home">Back to Home</a>
+        <a href="security.html" class="nav-button">Next: Security →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
