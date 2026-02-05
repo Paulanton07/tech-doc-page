@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Understanding Main and Renderer processes in Electron - Learn about Electron's dual-process architecture.">
+  <title>Main vs Renderer Process - Electron Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-header">Electron Documentation</div>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link" href="introduction.html">Introduction</a>
+      <a class="nav-link" href="setup.html">Setup</a>
+      <a class="nav-link active" href="processes.html">Processes</a>
+      <a class="nav-link" href="first-app.html">First App</a>
+      <a class="nav-link" href="packaging.html">Packaging</a>
+      <a class="nav-link" href="security.html">Security</a>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="content">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      
+      <div id="main-content" class="doc-header">
+        <h1>Main vs Renderer Process</h1>
+      </div>
+
+      <div class="doc-section">
+        <h2>Understanding Electron's Architecture</h2>
+        <p>Electron apps have two types of processes: the main process and renderer processes. Understanding the difference between these processes is crucial for building Electron applications effectively.</p>
+        <p>The main process manages the application lifecycle, while renderer processes handle the user interface.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>The Main Process</h2>
+        <p>The main process is the entry point of your Electron application. It runs in a Node.js environment and has access to all Node.js APIs.</p>
+        <ul>
+          <li><strong>Main process: Node.js environment</strong> - Full access to Node.js APIs and modules</li>
+          <li><strong>Application lifecycle</strong> - Controls when the app starts and quits</li>
+          <li><strong>Window management</strong> - Creates and manages BrowserWindow instances</li>
+          <li><strong>Native features</strong> - Access to native menus, dialogs, and system tray</li>
+          <li><strong>Single instance</strong> - Only one main process runs per application</li>
+        </ul>
+        <pre><code>// main.js
+const { app, BrowserWindow } = require('electron');
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600
+  });
+  
+  win.loadFile('index.html');
+}</code></pre>
+      </div>
+
+      <div class="doc-section">
+        <h2>The Renderer Process</h2>
+        <p>Each BrowserWindow instance runs its own renderer process. Renderer processes are responsible for rendering web pages and handling user interactions.</p>
+        <ul>
+          <li><strong>Renderer process: Browser environment</strong> - Chromium rendering engine for displaying web content</li>
+          <li><strong>Web content</strong> - Renders HTML, CSS, and JavaScript</li>
+          <li><strong>Multiple instances</strong> - Each window or webview has its own renderer process</li>
+          <li><strong>Isolated by default</strong> - Limited access to Node.js for security reasons</li>
+          <li><strong>UI handling</strong> - Manages user interface and interactions</li>
+        </ul>
+        <pre><code>// renderer.js
+// Running in the renderer process
+document.getElementById('button').addEventListener('click', () => {
+  console.log('Button clicked in renderer process');
+});</code></pre>
+      </div>
+
+      <div class="doc-section">
+        <h2>Inter-Process Communication (IPC)</h2>
+        <p>Since the main and renderer processes are separate, Electron provides IPC (Inter-Process Communication) mechanisms to communicate between them:</p>
+        <ul>
+          <li>Use <code>ipcMain</code> in the main process to receive messages</li>
+          <li>Use <code>ipcRenderer</code> in renderer processes to send and receive messages</li>
+          <li>Implement a preload script for secure communication</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Process Separation Benefits</h2>
+        <p>The dual-process architecture provides several advantages:</p>
+        <ul>
+          <li><strong>Security</strong> - Isolates web content from system resources</li>
+          <li><strong>Stability</strong> - A crash in one renderer doesn't affect other windows</li>
+          <li><strong>Performance</strong> - Parallel processing and better resource management</li>
+          <li><strong>Sandboxing</strong> - Renderer processes can be sandboxed for security</li>
+        </ul>
+      </div>
+
+      <div class="page-navigation">
+        <a href="setup.html" class="nav-button">← Previous: Setup</a>
+        <a href="../index.html" class="back-home">Back to Home</a>
+        <a href="first-app.html" class="nav-button">Next: First App →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
